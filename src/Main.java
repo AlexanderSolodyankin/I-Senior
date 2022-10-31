@@ -22,7 +22,7 @@ public class Main {
         humen.name = "Alex";
         humen.password = "123456";
 
-        
+
 
 
 

@@ -8,7 +8,7 @@ import models.product.phone.Phone;
 import java.util.Random;
 
 public class SetParametr {
-    static Random ran = new Random();
+    static private Random ran = new Random();
 
     public static Object setParametr(String setProduct) {
        if (setProduct.equals("phone")){
@@ -19,7 +19,7 @@ public class SetParametr {
         return null;
     }
 
-    static Phone setParametrPhone() {
+    static private Phone setParametrPhone() {
         String[] names = new String[10];
         names[0] = "iPhone"; names[1] = "Samsung"; names[2] = "XiaMi"; names[3] = "Nokia";
         names[4] = "Siemens"; names[5] = "Fly"; names[6] = "Asus"; names[7] = "Very Zone";
@@ -41,7 +41,7 @@ public class SetParametr {
         return phone;
     }
 
-    static CPU setParametrCPU(){
+    static private CPU setParametrCPU(){
         String[] brand = new String[2];
         brand[0] = "Intel";
         brand[1] = "AMD";
@@ -59,7 +59,7 @@ public class SetParametr {
         cpu.setPrice((double) (ran.nextInt(50000) + 500) / 2.1);
         return cpu;
     }
-    static HDD setParametr(){
+    static private HDD setParametr(){
         String[] name = new String[5];
         name[0] = "Westorn Digital"; name[1] = "Sigate";
         name[2] = "Maxtor"; name[3] = "Kingstone";
@@ -81,7 +81,7 @@ public class SetParametr {
         return hardDisk;
     }
 
-    static GPU setParametrGPU(){
+    static private GPU setParametrGPU(){
         String[] brand = new String[2];
         brand[0] = "NVidea";
         brand[1] = "Radion";
@@ -106,4 +106,5 @@ public class SetParametr {
         gpu.setPrice(ran.nextInt(1500000) + 2000);
         return gpu;
     }
+
 }

@@ -1,6 +1,7 @@
 package service;
 
 import models.product.personal_computer.pc_complection.CPU;
+import models.product.personal_computer.pc_complection.GPU;
 import models.product.personal_computer.pc_complection.HDD;
 import models.product.phone.Phone;
 
@@ -78,5 +79,31 @@ public class SetParametr {
         hardDisk.setPrice(((double) ran.nextInt(30000) + 500) / 2.0);
 
         return hardDisk;
+    }
+
+    static GPU setParametrGPU(){
+        String[] brand = new String[2];
+        brand[0] = "NVidea";
+        brand[1] = "Radion";
+
+        String[] models = new String[5];
+        models[0] = "HD - " + ran.nextInt(10) +""+
+                ran.nextInt(10) +""+
+                ran.nextInt(10) +""+
+                ran.nextInt(10) ;
+        models[1] = "GeForce " + ran.nextInt(10) +""+
+                ran.nextInt(10) +""+
+                ran.nextInt(10) +""+
+                ran.nextInt(10) + (ran.nextBoolean()? "TI": "");
+        models[2] = "TNT For Byte " + ran.nextInt(10000) + 1000;
+        models[3] = "RTX " + ran.nextInt(999) + 100;
+        models[4] = "S3";
+
+        GPU gpu = new GPU();
+        gpu.setName(brand[ran.nextInt(brand.length)]);
+        gpu.setModel(models[ran.nextInt(models.length)]);
+        gpu.setgRAM(ran.nextInt(37888) + 500);
+        gpu.setPrice(ran.nextInt(1500000) + 2000);
+        return gpu;
     }
 }

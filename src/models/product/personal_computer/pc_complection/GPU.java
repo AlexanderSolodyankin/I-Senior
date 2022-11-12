@@ -8,6 +8,9 @@ public class GPU  implements Sels {
     private int gRAM;
     private double price;
 
+    public GPU() {
+    }
+
     public GPU(String name, String model, int gRAM, double price) {
         this.name = name;
         this.model = model;

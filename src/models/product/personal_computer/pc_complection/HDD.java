@@ -8,6 +8,9 @@ public class HDD implements Sels {
     private String model;
     private double price;
 
+    public HDD() {
+    }
+
     public HDD(String name, int volume, String model, double price) {
         this.name = name;
         this.volume = volume;

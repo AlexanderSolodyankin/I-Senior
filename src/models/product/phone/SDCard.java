@@ -7,6 +7,9 @@ public class SDCard implements Sels {
     private int volum;
     private double price;
 
+    public SDCard() {
+    }
+
     public SDCard(String name, int volum, double price) {
         this.name = name;
         this.volum = volum;

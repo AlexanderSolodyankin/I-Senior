@@ -1,25 +1,19 @@
 package service;
 
+import models.product.personal_computer.PersonalComputer;
 import models.product.personal_computer.pc_acsesuar.ComputerBlock;
 import models.product.personal_computer.pc_acsesuar.Display;
 import models.product.personal_computer.pc_acsesuar.Keyboard;
 import models.product.personal_computer.pc_acsesuar.Mous;
 import models.product.personal_computer.pc_complection.*;
 import models.product.phone.Phone;
+import models.product.phone.SDCard;
 
 import java.util.Random;
 
 public class SetParameter {
     static private Random ran = new Random();
 
-    public static Object setParametr(String setProduct) {
-       if (setProduct.equals("phone")){
-           return setParameterPhone();
-       }else if(setProduct.equals("cpu")){
-            return setParameterCPU();
-       }
-        return null;
-    }
 
     static private Phone setParameterPhone() {
         String[] names = new String[10];
@@ -41,6 +35,20 @@ public class SetParameter {
                 color[ran.nextInt(color.length)],
                 ran.nextInt(150000) + 5000);
         return phone;
+    }
+
+    static private SDCard setParameterSDCard(){
+        SDCard sdCard = new SDCard();
+
+        String[] brand = new String[3];
+        brand[0] = "KingStone";
+        brand[1] = "Corsair";
+        brand[2] = "HyperX";
+        sdCard.setName(brand[ran.nextInt(brand.length)]);
+        sdCard.setVolum(ran.nextInt(5120000) + 64);
+        sdCard.setPrice((double) (ran.nextInt(15000)+ 500) / 2);
+
+        return sdCard;
     }
 
     static private CPU setParameterCPU(){
@@ -213,7 +221,7 @@ public class SetParameter {
         return blockPW;
     }
 
-    static private ComputerBlock setParameterPC(){
+    static private ComputerBlock setParameterPC_Block(){
         ComputerBlock blockPC = new ComputerBlock();
         blockPC.setBoard(setParameterMotherBoard());
         blockPC.setPowerBlock(setParametrPW_B());
@@ -258,6 +266,7 @@ public class SetParameter {
 
         return monitor;
     }
+
     static private Keyboard setParameterKey(){
 
         Keyboard keyboard = new Keyboard();
@@ -292,6 +301,25 @@ public class SetParameter {
         mous.setPrice((double) (ran.nextInt(14000) + 200) / 2);
         return mous;
     }
+
+    static private PersonalComputer setParameterPC(){
+        PersonalComputer computer = new PersonalComputer();
+        computer.setBlock(setParameterPC_Block());
+        computer.setMonitor(setPArametrMonitor());
+        computer.setKeyboard(setParameterKey());
+        computer.setMous(setParameterMous());
+        computer.setPrice(
+                computer.getBlock().getPrice()+
+                        computer.getKeyboard().getPrice()+
+                        computer.getMous().getPrice()+
+                        computer.getMonitor().getPrice()
+        );
+        return computer;
+    }
+
+
+
+
 
 
 

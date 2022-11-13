@@ -11,12 +11,17 @@ public class PersonalComputer implements Sels {
     private Display monitor;
     private Keyboard keyboard;
     private Mous mous;
+    private double price;
 
-    public PersonalComputer(ComputerBlock block, Display monitor, Keyboard keyboard, Mous mous) {
+    public PersonalComputer() {
+    }
+
+    public PersonalComputer(ComputerBlock block, Display monitor, Keyboard keyboard, Mous mous, double price) {
         this.block = block;
         this.monitor = monitor;
         this.keyboard = keyboard;
         this.mous = mous;
+        this.price = price;
     }
 
     public ComputerBlock getBlock() {
@@ -49,6 +54,14 @@ public class PersonalComputer implements Sels {
 
     public void setMous(Mous mous) {
         this.mous = mous;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override

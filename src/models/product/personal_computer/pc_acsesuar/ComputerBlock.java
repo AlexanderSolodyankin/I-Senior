@@ -9,11 +9,17 @@ public class ComputerBlock implements Sels {
     private MotherBoard board;
     private PowerBlock powerBlock;
     private HDD disk;
+    private double price;
 
-    public ComputerBlock(MotherBoard board, PowerBlock powerBlock, HDD disk) {
+    public ComputerBlock() {
+    }
+
+
+    public ComputerBlock(MotherBoard board, PowerBlock powerBlock, HDD disk, double price) {
         this.board = board;
         this.powerBlock = powerBlock;
         this.disk = disk;
+        this.price = price;
     }
 
     public MotherBoard getBoard() {
@@ -38,6 +44,14 @@ public class ComputerBlock implements Sels {
 
     public void setDisk(HDD disk) {
         this.disk = disk;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override

@@ -1,23 +1,25 @@
 package service;
 
+import models.product.personal_computer.pc_acsesuar.ComputerBlock;
+import models.product.personal_computer.pc_acsesuar.Display;
 import models.product.personal_computer.pc_complection.*;
 import models.product.phone.Phone;
 
 import java.util.Random;
 
-public class SetParametr {
+public class SetParameter {
     static private Random ran = new Random();
 
     public static Object setParametr(String setProduct) {
        if (setProduct.equals("phone")){
-           return setParametrPhone();
+           return setParameterPhone();
        }else if(setProduct.equals("cpu")){
-            return setParametrCPU();
+            return setParameterCPU();
        }
         return null;
     }
 
-    static private Phone setParametrPhone() {
+    static private Phone setParameterPhone() {
         String[] names = new String[10];
         names[0] = "iPhone"; names[1] = "Samsung"; names[2] = "XiaMi"; names[3] = "Nokia";
         names[4] = "Siemens"; names[5] = "Fly"; names[6] = "Asus"; names[7] = "Very Zone";
@@ -39,7 +41,7 @@ public class SetParametr {
         return phone;
     }
 
-    static private CPU setParametrCPU(){
+    static private CPU setParameterCPU(){
         String[] brand = new String[2];
         brand[0] = "Intel";
         brand[1] = "AMD";
@@ -57,7 +59,8 @@ public class SetParametr {
         cpu.setPrice((double) (ran.nextInt(50000) + 500) / 2.1);
         return cpu;
     }
-    static private HDD setParametr(){
+
+    static private HDD setParametrHDD(){
         String[] name = new String[5];
         name[0] = "Westorn Digital";
         name[1] = "Sigate";
@@ -81,7 +84,7 @@ public class SetParametr {
         return hardDisk;
     }
 
-    static private GPU setParametrGPU(){
+    static private GPU setParameterGPU(){
         String[] brand = new String[2];
         brand[0] = "NVidea";
         brand[1] = "Radion";
@@ -107,7 +110,7 @@ public class SetParametr {
         return gpu;
     }
 
-    static private RAM setParametrRAM(){
+    static private RAM setParameterRAM(){
         String[] brand = new String[3];
         brand[0] = "KingStone";
         brand[1] = "Corsair";
@@ -128,7 +131,7 @@ public class SetParametr {
         return ram;
     }
 
-    static private MotherBoard setParametrMotherBoard(){
+    static private MotherBoard setParameterMotherBoard(){
 
         String[] name = new String[10];
         name[0] = "BioStar";
@@ -160,16 +163,103 @@ public class SetParametr {
         board.setPrice((double)(ran.nextInt(150000) + 500) / 2 );
 
         if(ran.nextBoolean()){
-            board.setCpu(setParametrCPU());
+            board.setCpu(setParameterCPU());
         }else board.setCpu(null);
         if(ran.nextBoolean()){
-            board.setRam(setParametrRAM());
+            board.setRam(setParameterRAM());
         }else board.setRam(null);
         if(ran.nextBoolean()){
-            board.setVideoCard(setParametrGPU());
+            board.setVideoCard(setParameterGPU());
         }else board.setVideoCard(null);
+
+        board.setPrice(board.getPrice() +
+                ((board.getCpu()!= null)? board.getCpu().getPrice() : 0) +
+                (board.getRam() != null? board.getRam().getPrice() : 0) +
+                (board.getVideoCard() != null? board.getVideoCard().getPrice(): 0));
 
         return board;
     }
+
+    static private PowerBlock setParametrPW_B(){
+
+        PowerBlock blockPW = new PowerBlock();
+
+        blockPW.setPower(ran.nextInt(2500) + 150);
+        blockPW.setPin(ran.nextBoolean()? 8 : 6);
+        blockPW.setCountPin(ran.nextBoolean()? 1:
+                            ran.nextBoolean()? 2:
+                            ran.nextBoolean()? 4 : 6);
+        blockPW.setPrice((double) (ran.nextInt(50000) + 1000) / 2);
+
+        String[] names = new String[10];
+        names[0] = "Thermaltake";
+        names[1] = "Sea Sonic";
+        names[2] = "Chieftec";
+        names[3] = "Cougar";
+        names[4] = "Zalman";
+        names[5] = "ENERMAX";
+        names[6] = "BE QUIET!";
+        names[7] = "Corsair";
+        names[8] = "DeepCool";
+        names[9] = "FSP";
+
+        blockPW.setName(names[ran.nextInt(names.length)] +
+                " PW:" + blockPW.getPower() +
+                " PIN" + blockPW.getPin() +
+                "/" + blockPW.getCountPin());
+
+        return blockPW;
+    }
+
+    static private ComputerBlock setParameterPC(){
+        ComputerBlock blockPC = new ComputerBlock();
+        blockPC.setBoard(setParameterMotherBoard());
+        blockPC.setPowerBlock(setParametrPW_B());
+        blockPC.setDisk(setParametrHDD());
+        blockPC.setPrice(blockPC.getPowerBlock().getPrice() +
+                blockPC.getDisk().getPrice()+
+                blockPC.getBoard().getPrice()
+                );
+        return blockPC;
+    }
+
+    static private Display setPArametrMonitor(){
+
+        Display monitor = new Display();
+        monitor.setHeith(ran.nextInt(9001) + 600);
+        monitor.setWidth(ran.nextInt(9001) + 800);
+
+        String[] name = new String[10];
+        name[0] = "Acer";
+        name[1] = "MSI";
+        name[2] = "LG";
+        name[3] = "Samsung";
+        name[4] = "Philips";
+        name[5] = "AOC";
+        name[6] = "ASUS";
+        name[7] = "HP";
+        name[8] = "Dell";
+        name[9] = "ViewSonic";
+
+        String[] models = new String[10];
+        models[0] = "V" + (ran.nextInt(900)+ 100) + "w";
+        models[1] = "W" + (ran.nextInt(9000)+ 1000) + "S";
+        models[2] = "WarX" + (ran.nextInt(9000)+ 1000) + "Color";
+        models[3] = "BRX " + (ran.nextInt(90)+ 10) + " Pixel";
+        models[4] = "Big " + (ran.nextInt(90)+ 30) + " Pixel";
+
+        monitor.setName(name[ran.nextInt(name.length)]);
+        monitor.setModel(models[ran.nextInt(models.length)] +
+                " " + monitor.getWidth() + "X" + monitor.getHeith());
+
+        monitor.setPrice((double) (ran.nextInt(90000) + 2000) / 2);
+
+        return monitor;
+    }
+
+
+
+
+
 
 }

@@ -9,6 +9,9 @@ public class PowerBlock implements Sels {
     private int pin;
     private int countPin;
 
+    public PowerBlock() {
+    }
+
     public PowerBlock(String name, int power, double price, int pin, int countPin) {
         this.name = name;
         this.power = power;

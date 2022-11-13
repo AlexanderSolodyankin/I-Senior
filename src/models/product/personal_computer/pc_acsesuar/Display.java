@@ -9,6 +9,9 @@ public class Display implements Sels {
     private int heith;
     private double price;
 
+    public Display() {
+    }
+
     public Display(String name, String model, int width, int heith, double price) {
         this.name = name;
         this.model = model;

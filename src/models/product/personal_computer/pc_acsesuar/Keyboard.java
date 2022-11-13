@@ -7,6 +7,9 @@ public class Keyboard  implements Sels {
     private int countKey;
     private double price;
 
+    public Keyboard() {
+    }
+
     public Keyboard(String name, int countKey, double price) {
         this.name = name;
         this.countKey = countKey;

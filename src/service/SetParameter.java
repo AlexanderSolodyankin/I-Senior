@@ -2,6 +2,8 @@ package service;
 
 import models.product.personal_computer.pc_acsesuar.ComputerBlock;
 import models.product.personal_computer.pc_acsesuar.Display;
+import models.product.personal_computer.pc_acsesuar.Keyboard;
+import models.product.personal_computer.pc_acsesuar.Mous;
 import models.product.personal_computer.pc_complection.*;
 import models.product.phone.Phone;
 
@@ -255,6 +257,40 @@ public class SetParameter {
         monitor.setPrice((double) (ran.nextInt(90000) + 2000) / 2);
 
         return monitor;
+    }
+    static private Keyboard setParameterKey(){
+
+        Keyboard keyboard = new Keyboard();
+
+        String[] names = new String[5];
+        names[0] = "A4Tech";
+        names[1] = "OKLICK";
+        names[2] = "Logitech";
+        names[3] = "Gembird";
+        names[4] = "HyperX";
+
+        keyboard.setName(names[ran.nextInt(names.length)]);
+        keyboard.setCountKey(
+                ( ran.nextBoolean()? 64 : (ran.nextBoolean()? 109 : 109 + (ran.nextInt(50) + 10)))
+        );
+
+        keyboard.setPrice((double) (ran.nextInt(14000) + 200) / 2);
+
+        return keyboard;
+    }
+
+    static private Mous setParameterMous(){
+        Mous mous = new Mous();
+
+        String[] names = new String[5];
+        names[0] = "A4Tech";
+        names[1] = "OKLICK";
+        names[2] = "Logitech";
+        names[3] = "Gembird";
+        names[4] = "HyperX";
+        mous.setName(names[ran.nextInt(names.length)]);
+        mous.setPrice((double) (ran.nextInt(14000) + 200) / 2);
+        return mous;
     }
 
 

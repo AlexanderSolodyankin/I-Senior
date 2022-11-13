@@ -8,6 +8,7 @@ import models.product.personal_computer.pc_acsesuar.Mous;
 import models.product.personal_computer.pc_complection.*;
 import models.product.phone.Phone;
 import models.product.phone.SDCard;
+import models.product.toys.Toys;
 
 import java.util.Random;
 
@@ -315,6 +316,30 @@ public class SetParameter {
                         computer.getMonitor().getPrice()
         );
         return computer;
+    }
+
+    static  private Toys setParameterToys(){
+        Toys toys = new Toys();
+        toys.setGender(ran.nextBoolean());
+        toys.setPrice((double) (ran.nextInt(40000) + 500) / 2);
+
+        String[][] names = new String[2][5];
+        names[0][0] = "Robot";
+        names[0][1] = "Gun";
+        names[0][2] = "Car";
+        names[0][3] = "Airplane";
+        names[0][4] = "Ball";
+
+        names[1][0] = " укла";
+        names[1][1] = "—какалка";
+        names[1][2] = " укольный домик";
+        names[1][3] = "ѕлюшевый мишка";
+        names[1][4] = "ћ€чик";
+
+        if(toys.isGender()){
+            toys.setName(names[0][ran.nextInt(names[0].length)]);
+        }else toys.setName(names[1][ran.nextInt(names[1].length)]);
+        return toys;
     }
 
 

@@ -6,13 +6,14 @@ public class Toys implements Sels {
     private String name;
     private boolean gender;
     private double price;
-    private String discript;
 
-    public Toys(String name, boolean gender, double price, String discript) {
+    public Toys() {
+    }
+
+    public Toys(String name, boolean gender, double price) {
         this.name = name;
         this.gender = gender;
         this.price = price;
-        this.discript = discript;
     }
 
     public String getName() {
@@ -39,21 +40,13 @@ public class Toys implements Sels {
         this.price = price;
     }
 
-    public String getDiscript() {
-        return discript;
-    }
-
-    public void setDiscript(String discript) {
-        this.discript = discript;
-    }
 
     @Override
     public String toString() {
         return "Toys{" +
                 "name='" + name + '\'' +
-                ", gender=" + gender +
+                ", gender=" + (gender? " boy": " girl") +
                 ", price=" + price +
-                ", discript='" + discript + '\'' +
                 '}' + "\n";
     }
 

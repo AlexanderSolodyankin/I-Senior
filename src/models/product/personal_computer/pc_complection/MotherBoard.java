@@ -12,6 +12,9 @@ public class MotherBoard implements Sels {
     private RAM ram;
     private GPU videoCard;
 
+    public MotherBoard() {
+    }
+
     public MotherBoard(String name, String model, int port, double price) {
         this.name = name;
         this.model = model;

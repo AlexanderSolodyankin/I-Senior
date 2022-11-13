@@ -9,6 +9,10 @@ public class RAM implements Sels {
     private int volume;
     private double price;
 
+
+    public RAM() {
+    }
+
     public RAM(String brand, String model, int purity, int volume, double price) {
         this.brand = brand;
         this.model = model;

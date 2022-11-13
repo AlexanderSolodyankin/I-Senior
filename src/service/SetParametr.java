@@ -1,8 +1,6 @@
 package service;
 
-import models.product.personal_computer.pc_complection.CPU;
-import models.product.personal_computer.pc_complection.GPU;
-import models.product.personal_computer.pc_complection.HDD;
+import models.product.personal_computer.pc_complection.*;
 import models.product.phone.Phone;
 
 import java.util.Random;
@@ -61,8 +59,10 @@ public class SetParametr {
     }
     static private HDD setParametr(){
         String[] name = new String[5];
-        name[0] = "Westorn Digital"; name[1] = "Sigate";
-        name[2] = "Maxtor"; name[3] = "Kingstone";
+        name[0] = "Westorn Digital";
+        name[1] = "Sigate";
+        name[2] = "Maxtor";
+        name[3] = "Kingstone";
         name[4] = "Gigabyte";
 
         String[] models = new String[5];
@@ -105,6 +105,71 @@ public class SetParametr {
         gpu.setgRAM(ran.nextInt(37888) + 500);
         gpu.setPrice(ran.nextInt(1500000) + 2000);
         return gpu;
+    }
+
+    static private RAM setParametrRAM(){
+        String[] brand = new String[3];
+        brand[0] = "KingStone";
+        brand[1] = "Corsair";
+        brand[2] = "HyperX";
+
+        String[] model = new String[3];
+        model[0] = "MD-400";
+        model[1] = "RPX - " + ran.nextInt(9999) + 1000;
+        model[2] = "SuperVolume X" + ran.nextInt(10) + 1;
+
+        RAM  ram = new RAM();
+        ram.setBrand(brand[ran.nextInt(brand.length)]);
+        ram.setModel(model[ran.nextInt(model.length)]);
+        ram.setPurity(ran.nextInt(99999)+ 10000);
+        ram.setVolume((ran.nextInt(120) + 1) * 1024);
+        ram.setPrice((double) (ran.nextInt(65000) + 500) / 2);
+
+        return ram;
+    }
+
+    static private MotherBoard setParametrMotherBoard(){
+
+        String[] name = new String[10];
+        name[0] = "BioStar";
+        name[1] = "Asus";
+        name[2] = "Gigabyte";
+        name[3] = "Intel";
+        name[4] = "ASRock";
+        name[5] = "IBM";
+        name[6] = "VIA";
+        name[7] = "Dell";
+        name[8] = "Tyan";
+        name[9] = "Supermicro";
+
+        String[] model = new String[3];
+        model[0] = "GPS - " +
+                ran.nextInt(10) + ""+
+                ran.nextInt(10) + ""+
+                ran.nextInt(10) + " " +
+                (ran.nextBoolean()?
+                        "USB" + ran.nextInt(4)+2 + " " :
+                        ran.nextBoolean()? "RDX" : "");
+        model[1] = "BR - " + (ran.nextInt(9999) + 1000);
+        model[2] = "Macros MSI " + ran.nextInt(999) + 100;
+
+        MotherBoard board = new MotherBoard();
+        board.setName(name[ran.nextInt(name.length)]);
+        board.setModel(model[ran.nextInt(model.length)]);
+        board.setPort(ran.nextInt(16) + 2);
+        board.setPrice((double)(ran.nextInt(150000) + 500) / 2 );
+
+        if(ran.nextBoolean()){
+            board.setCpu(setParametrCPU());
+        }else board.setCpu(null);
+        if(ran.nextBoolean()){
+            board.setRam(setParametrRAM());
+        }else board.setRam(null);
+        if(ran.nextBoolean()){
+            board.setVideoCard(setParametrGPU());
+        }else board.setVideoCard(null);
+
+        return board;
     }
 
 }

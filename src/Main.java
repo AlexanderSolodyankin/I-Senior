@@ -7,12 +7,7 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println();
 
-        Phone phone = (Phone) SetParametr.setParametr("phone");
-        System.out.println(phone);
-        CPU cpu = (CPU)SetParametr.setParametr("cpu");
-        System.out.println(cpu);
 
 
 

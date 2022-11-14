@@ -16,6 +16,11 @@ public class SetParameter {
     static private Random ran = new Random();
 
 
+    static public Object setParametr(){
+        return setParameterPhone();
+    }
+
+
     static private Phone setParameterPhone() {
         String[] names = new String[10];
         names[0] = "iPhone"; names[1] = "Samsung"; names[2] = "XiaMi"; names[3] = "Nokia";

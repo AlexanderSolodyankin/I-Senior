@@ -1,6 +1,6 @@
 package models;
 
-import models.User;
+
 
 public class UserInfo {
     private String name;
@@ -8,6 +8,7 @@ public class UserInfo {
     private String patrols;
     private int age;
     private String phone;
+    private boolean gender;
     private User user ;
 
     public String getName() {
@@ -50,7 +51,13 @@ public class UserInfo {
         this.phone = phone;
     }
 
+    public boolean isGender() {
+        return gender;
+    }
 
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
 
     public User getUser() {
         return user;
